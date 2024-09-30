@@ -16,11 +16,6 @@ export function setJwtCookie(token) {
         secure: false,
         path: '/' 
     });
-    cookie.set("is_author", token.is_author, {
-        httpOnly: false,
-        secure: false,
-        path: '/'
-    });
 }
 
 export function clearJwtCookie() {

@@ -23,6 +23,11 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         return user
     
 class UserSerializer(serializers.ModelSerializer):
+    is_author = serializers.SerializerMethodField()
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['username', 'email', 'is_author']
+
+    def get_is_author(self, obj):
+        # Check if the user has the 'author' permission
+        return obj.has_perm('book.author')
