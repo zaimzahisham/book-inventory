@@ -1,15 +1,31 @@
 import { Box } from "@mui/material"
 import { Topbar } from "../components/Components"
-import { Outlet } from "react-router-dom"
-import { card, page } from "../components/Styles"
+import { Outlet, useLocation, useNavigate } from "react-router-dom"
+import { page } from "../components/Styles"
+import { getAccessToken, getRefreshToken } from "./authentication/auth"
+import { useEffect } from "react"
 
 
 const Base = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    useEffect(() => {
+        const accessToken = getAccessToken();
+        const refreshToken = getRefreshToken();
+
+        if (!accessToken || !refreshToken) {
+            navigate('/login');
+        } else {
+            if (location.pathname === "/") {
+                navigate('/books');
+            }
+        }
+    }, [navigate]);
 
     return (
-        <Box sx={{p: 1}}>
+        <Box>
             <Topbar />
-            <Box sx={{...page, ...card}}>
+            <Box sx={{...page}}>
                 <Outlet />    
             </Box>
         </Box>

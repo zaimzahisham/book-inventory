@@ -1,5 +1,6 @@
-import { createTheme } from "@mui/material";
+import { colors, createTheme } from "@mui/material";
 
+//theme
 export const theme = createTheme({
     palette: {
       mode: 'light',
@@ -13,34 +14,34 @@ export const theme = createTheme({
     typography: {
       fontFamily: 'Roboto',
       h1: {
-        fontSize: '3rem',
+        fontSize: '2rem',
         fontWeight: 'bold',
       },
       h2: {
-        fontSize: '2.5rem',
+        fontSize: '1.5rem',
         fontWeight: 600,
       },
       h3: {
-        fontSize: '2rem',
+        fontSize: '1rem',
       },
       h4: {
-        fontSize: '1.5rem',
+        fontSize: '0.75rem',
       },
     },
   })
 
-export const page = {
-  p: '1rem',
-  mt: '1rem',
-  height: 1
-} 
+//layout styles
+export const padding = {p: '1rem'}
+export const row = {flexDirection:'row', display:'flex', alignItems:'center', gap: 1}
+export const column = {flexDirection:'column', display:'flex', gap: 1}
+export const textInput = {width: 1, mb: 2, '.MuiInputBase-input': {height: '0.5rem'}}
 
+// component styles
+export const page = {p: '1rem', mt: '0.1rem', minHeight: '100vh', width: 1, bgcolor: "#F7FAFF"}
 export const topbar = {
-  bgcolor: 'background.paper',
-}
-
-export const card = {
-  bgcolor: 'grey',
-  border: '2px solid #000',
-  boxShadow: 24,
+  ...row,
+  color: theme.palette.primary.main,
+  bgcolor: "white",//,'grey'
+  justifyContent: 'space-between',
+  boxShadow: 1,
 }
