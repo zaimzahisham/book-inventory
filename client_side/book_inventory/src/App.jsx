@@ -6,6 +6,7 @@ import Base from './pages/Base';
 import Books from './pages/book/Books';
 import Login from './pages/authentication/login';
 import Register from './pages/authentication/register';
+import BookForm from './pages/book/BookForm';
 
 const App = () => {
     return (
@@ -16,6 +17,8 @@ const App = () => {
                 <Route path='/' element={<Base />} > 
                     <Route path='home' element={<Home />} />
                     <Route path='books' element={<Books />} />
+                    <Route path='books/add' element={<BookForm method='Add' />} />
+                    <Route path='books/update/:id' element={<BookForm method='Update' />} />
                 </Route>
                 <Route path='/login/' element={<Login />} />
                 <Route path='/register/' element={<Register />} />

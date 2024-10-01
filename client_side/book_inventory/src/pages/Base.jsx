@@ -1,5 +1,5 @@
 import { Box } from "@mui/material"
-import { Topbar } from "../components/Components"
+import { Topbar } from "../components/Topbar"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import { page } from "../components/Styles"
 import { getAccessToken, getRefreshToken } from "./authentication/auth"

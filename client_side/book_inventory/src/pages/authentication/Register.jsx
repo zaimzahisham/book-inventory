@@ -1,5 +1,5 @@
 import { Typography, Box, Card, TextField, Button } from "@mui/material"
-import { column, page, row, textInput, theme } from "../../components/Styles"
+import { centerBox, column, page, row, textInput, theme } from "../../components/Styles"
 import { Book } from "@mui/icons-material"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
@@ -35,7 +35,7 @@ const Register = () => {
     }
 
     return (
-        <Box sx={{...page, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <Box sx={{...page, ...centerBox}}>
             <Card sx={{width: '30rem', boxShadow: 3, p: 3}}>
                 <Box sx={{...row, color: theme.palette.primary.main}}>
                     <Book />
