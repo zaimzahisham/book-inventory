@@ -1,31 +1,47 @@
-import { ImageNotSupportedOutlined } from "@mui/icons-material"
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material"
+import { FavoriteBorderOutlined } from "@mui/icons-material"
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material"
 import { getIsAuthor } from "../authentication/auth"
 import { useNavigate } from "react-router-dom"
-import { centerBox, theme } from "../../components/Styles"
+import { cardButton, centerBox, row, theme } from "../../components/Styles"
 import { grey } from "@mui/material/colors"
+import noPhotoImage from '../../assets/no-photo.png';
 
 const BookCard = ({book}) => {
     const isAuthor = getIsAuthor()
     const navigate = useNavigate()
 
     return (
-        <Card sx={{width: '17.5rem', margin: 2}}>
-            <CardMedia sx={{...centerBox, height: '15rem', bgcolor: grey[200]}} title={book.title} >
-                <ImageNotSupportedOutlined sx={{height: 0.5, width: 0.5, color: theme.palette.secondary.main}}/>
-            </CardMedia>
-            <CardContent sx={{height: '15rem'}}>
+        <Card sx={{width: '15rem', margin: 2}}>
+            <Box sx={{ position: 'relative' }}>
+                <CardMedia sx={{...centerBox, height: '15rem', bgcolor: grey[200]}} title={book.title} image={noPhotoImage} />
+                <Box sx={{position: 'absolute', bottom: 0, left: 0, right: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', p: 2}}>
+                    <Typography variant="h2" sx={{bgcolor: 'background.paper', borderRadius: 1, fontWeight: 'bold', p: 1, boxShadow: 2}}>
+                        ${book.price}
+                    </Typography>
+                    {isAuthor? 
+                    <Button variant="contained" sx={{ ...cardButton }} onClick={() => navigate(`/books/update/${book.id}`)}>Edit</Button>
+                    :   
+                    <Button variant="contained" sx={{ ...cardButton }} startIcon={<FavoriteBorderOutlined />}>
+                        Save
+                    </Button>
+                    }
+                </Box>    
+            </Box>
+            
+            <CardContent sx={{height: '12.5rem'}}>
                 <Typography variant="h2">{book.title}</Typography>
-                <Typography variant="h4">{book.genre}</Typography>
-                <Typography variant="h3">{book.author}</Typography>
-                <Typography variant="h4">{book.publication_date}</Typography>
-                <Typography variant="h4">{book.description}</Typography>
-                <Typography variant="h3">{book.price}</Typography>    
+                <Box sx={{...row, justifyContent: 'space-between'}}>
+                    <Typography variant="h3">{book.author}</Typography>
+                    <Typography variant="h4">{book.publication_date}</Typography>
+                </Box>
+                <Typography variant="h4">Genre: {book.genre}</Typography>
+                
+                <Typography variant="h4" sx={{fontStyle: "italic"}}>{book.description}</Typography>
             </CardContent>
             {
                 !isAuthor? null :
                 <CardActions sx={{justifyContent: 'end'}}>
-                    <Button variant="outlined" onClick={() => navigate(`/books/update/${book.id}`)}>Edit</Button>
+                    
                 </CardActions>    
             }
         </Card>

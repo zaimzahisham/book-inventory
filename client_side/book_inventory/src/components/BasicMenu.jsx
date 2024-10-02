@@ -13,6 +13,11 @@ export default function BasicMenu({title, menuItems, itemsOnClick}) {
     setAnchorEl(null);
   };
 
+  const onItemClick = (index) => {
+    itemsOnClick[index]()
+    handleClose()
+  }
+
   return (
     <>
       <Button
@@ -30,7 +35,7 @@ export default function BasicMenu({title, menuItems, itemsOnClick}) {
         }}
       > 
       {menuItems.map((item, index) => (
-        <MenuItem key={index} onClick={() => itemsOnClick[index]()}>{item}</MenuItem>
+        <MenuItem key={index} onClick={() => onItemClick(index)}>{item}</MenuItem>
       ))}
       </Menu>
     </>

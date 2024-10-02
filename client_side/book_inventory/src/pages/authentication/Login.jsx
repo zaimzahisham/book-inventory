@@ -48,7 +48,7 @@ const Login = () => {
                     <Typography variant="h3">Username</Typography>
                     <TextField sx={textInput} onChange={(e) => setUsername(e.target.value)}/>
                     <Typography variant="h3">Password</Typography>
-                    <TextField sx={textInput} onChange={(e) => setPassword(e.target.value)}/>
+                    <TextField type="password" sx={textInput} onChange={(e) => setPassword(e.target.value)}/>
                     <Button variant="contained" sx={{width: 1, mb: 1}} onClick={login}>Login</Button>
                     <Typography variant="h3" textAlign={'center'}>Don't have an account? <a href="/register">Register</a></Typography>
                 </Box>  

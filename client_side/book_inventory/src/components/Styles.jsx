@@ -12,7 +12,6 @@ export const theme = createTheme({
       },
     },
     typography: {
-      fontFamily: 'Roboto',
       h1: {
         fontSize: '2rem',
         fontWeight: 'bold',
@@ -37,15 +36,12 @@ export const theme = createTheme({
 export const padding = {p: '1rem'}
 export const row = {flexDirection:'row', display:'flex', alignItems:'center', gap: 1}
 export const column = {flexDirection:'column', display:'flex', gap: 1}
-export const textInput = {width: 1, mb: 2, '.MuiInputBase-input': {height: '0.5rem'}}
-export const centerBox = {display: 'flex', alignItems: 'center', justifyContent: 'center'}
+export const rowColumn = {flexDirection: {xs: 'column', md: 'row'}, display:'flex', gap: 1}
 
 // component styles
 export const page = {p: '1rem', mt: '0.1rem', minHeight: '100vh', width: 1, bgcolor: "#F7FAFF"}
-export const topbar = {
-  ...row,
-  color: theme.palette.primary.main,
-  bgcolor: "white",//,'grey'
-  justifyContent: 'space-between',
-  boxShadow: 1,
-}
+export const topbar = {...row, color: theme.palette.primary.main, bgcolor: "white", justifyContent: 'space-between', boxShadow: 1}
+export const cardButton = {borderRadius: 1, pt: 1.1, pb: 1.1}
+export const textInput = {width: 1, mb: 2, '.MuiInputBase-input': {height: '0.5rem'}}
+export const centerBox = {display: 'flex', alignItems: 'center', justifyContent: 'center'}
+

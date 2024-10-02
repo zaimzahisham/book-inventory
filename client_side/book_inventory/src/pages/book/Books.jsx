@@ -1,5 +1,5 @@
 import { Typography, Box, Button, IconButton } from "@mui/material"
-import { centerBox, column, page, row } from "../../components/Styles"
+import { centerBox, column, page, row, rowColumn } from "../../components/Styles"
 import { useEffect, useState } from "react"
 import { axiosInstance } from "../authentication/auth"
 import config from "../../config"
@@ -34,13 +34,13 @@ const Books = () => {
     return (
         <Box sx={{...page}}>
             <Box sx={{...column, ...centerBox}}>
-                <Typography variant="h2">POPULAR BOOKS</Typography>    
-                <Typography variant="h1">Here are our popular books you might like</Typography>     
+                <Typography variant="h2" sx={{textAlign: 'center'}}>POPULAR BOOKS</Typography>    
+                <Typography variant="h1" sx={{textAlign: 'center'}}>Here are our popular books you might like</Typography>     
                 <Box sx={{...row}}>
                     <Button variant="contained">View All</Button>
                     <Button variant="outlined">Explore More</Button>
                 </Box>
-                <Box sx={{...row, ...centerBox}}>
+                <Box sx={{...rowColumn, ...centerBox}}>
                     {
                         books.map((book) => {
                             return (

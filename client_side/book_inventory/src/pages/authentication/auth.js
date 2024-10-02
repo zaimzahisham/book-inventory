@@ -60,3 +60,27 @@ export const axiosInstance = axios.create({
         Authorization: `Bearer ${getAccessToken()}`,
     },
 });
+
+// refresh token if request error status 401
+axiosInstance.interceptors.response.use(
+    response => response,
+    error => {
+        const originalRequest = error.config;
+        if (error.response.status === 401 && !originalRequest._retry) {
+            originalRequest._retry = true;
+            return axios
+                .post(config.server_url + '/user/token/refresh/', {
+                    refresh: getRefreshToken(),
+                })
+                .then(res => {
+                    setAccessToken(res.data.access);
+                    setJwtCookie(res.data);
+                    originalRequest.headers['Authorization'] = `Bearer ${res.data.access}`;
+                    return axios(originalRequest);
+                })
+                .catch(err => {
+                    clearJwtCookie();
+                });
+        }
+    }
+)
