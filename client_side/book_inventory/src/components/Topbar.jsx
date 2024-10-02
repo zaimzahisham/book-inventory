@@ -35,24 +35,23 @@ export const Topbar = () => {
                 setMenuItems(["Logout"])
                 setItemsOnClick([logout])
             }
-
-            console.log("topbar", response.data)
         }catch(error){
+            console.log(`topbar fetchUser error: ${error}`)
             navigate('/login')
         }
         
     }
 
-    const logout = async () => {
+    const logout = () => {
         try{
             clearJwtCookie()
             navigate('/')
         }catch(error){
-            console.log(error)
+            console.log(`logout error: ${error}`)
         }
     }
 
-    const addBook = async () => {
+    const addBook = () => {
         navigate('books/add')
     }
 

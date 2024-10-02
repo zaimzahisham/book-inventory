@@ -20,14 +20,28 @@ const BookForm = ({method}) => {
         return apiUrl
     }
 
+    const fetchBook = async () => {
+        try{
+            const apiUrl = constructApiUrl()
+            const response = await axiosInstance.get(apiUrl)
+            setBook(response.data)
+        }catch(error){
+            console.log('Error occurred while fetching book:', error)
+        }
+    }
+
+    useEffect(() => {
+        if (id) {
+            fetchBook()
+        }
+    } 
+    , [])
+
     const createOrUpdateBook = async () => {
         try{
             const apiUrl = constructApiUrl()
-            console.log(apiUrl)
-            console.log(book)
             const response = method === 'Update' ? await axiosInstance.put(apiUrl, book) : await axiosInstance.post(apiUrl, book)
-            if (response.status === 200 || response.status === 201) {
-                console.log(method + " success")
+            if (response.status === 201 || response.status === 200) {
                 navigate('/')
             }else{
                 console.log(`createOrUpdateBook: ${method} Error occurred`)
@@ -35,17 +49,6 @@ const BookForm = ({method}) => {
             
         }catch(error){
             console.log('createOrUpdateBook: Unexpected Error occurred', error)
-        }
-    }
-
-    const fetchBook = async () => {
-        try{
-            const apiUrl = constructApiUrl()
-            const response = await axiosInstance.get(apiUrl)
-            setBook(response.data)
-            console.log(`fetched book:`, response.data)
-        }catch(error){
-            console.log('Error occurred while fetching book:', error)
         }
     }
 
@@ -58,15 +61,6 @@ const BookForm = ({method}) => {
             console.log('Error occurred while deleting book:', error)
         }
     }
-
-    useEffect(() => {
-        console.log("ID?", id)
-        if (id) {
-            fetchBook()
-        }
-    } 
-    , [])
-
 
     return (
         <Box sx={{...page}}>

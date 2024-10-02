@@ -30,9 +30,6 @@ export default function BasicMenu({title, menuItems, itemsOnClick}) {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
       > 
       {menuItems.map((item, index) => (
         <MenuItem key={index} onClick={() => onItemClick(index)}>{item}</MenuItem>

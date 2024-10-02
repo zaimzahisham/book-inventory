@@ -20,7 +20,6 @@ const Register = () => {
                 email: email,
                 password: Password
             }
-            console.log(apiUrl, data)
             const response = await noCredentialsAxiosInstance.post(apiUrl, data)
             console.log(response)
             if (response.status === 201) {

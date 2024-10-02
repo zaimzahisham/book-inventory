@@ -6,12 +6,12 @@ import { centerBox, row } from "./Styles"
 const BasicPaginator = ({pageInfo, onPrevious, onNext}) => {
     return(
         <Box sx={{...row, ...centerBox}}>
-            <IconButton>
-                <ArrowBackIosNew onClick={onPrevious}/>
+            <IconButton onClick={onPrevious}>
+                <ArrowBackIosNew/>
             </IconButton>
             <Typography variant="h3">{pageInfo.page} of {pageInfo.total_pages}</Typography>
-            <IconButton>
-                <ArrowForwardIos onClick={onNext}/>
+            <IconButton  onClick={onNext}>
+                <ArrowForwardIos/>
             </IconButton>
         </Box>
     )

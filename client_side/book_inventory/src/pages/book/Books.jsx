@@ -1,9 +1,8 @@
-import { Typography, Box, Button, IconButton } from "@mui/material"
+import { Typography, Box, Button } from "@mui/material"
 import { centerBox, column, page, row, rowColumn } from "../../components/Styles"
 import { useEffect, useState } from "react"
 import { axiosInstance } from "../authentication/auth"
 import config from "../../config"
-import { ArrowBackIosNew, ArrowForwardIos } from "@mui/icons-material"
 import BookCard from "./BookCard"
 import BasicPaginator from "../../components/BasicPaginator"
 
@@ -14,14 +13,11 @@ const Books = () => {
     const fetchBooks = async (page) => {
         try{
             const apiUrl = page?? config.server_url + '/api/books/'
-            console.log(`fetchbooks url: ${apiUrl}`)
             const response = await axiosInstance.get(apiUrl)
             setBooks(response.data.results)
-            console.log("books", response.data.results)
 
             delete response.data.results
             setPageInfo(response.data)
-            console.log("page info", response.data)
         }catch(error){
             console.log('Error occurred while fetching books:', error)
         }
@@ -44,15 +40,13 @@ const Books = () => {
                     {
                         books.map((book) => {
                             return (
-                                <BookCard book={book} />
-                                
+                                <BookCard key={book.id} book={book} />
                             )
                         })
                     }
                 </Box>
                 <BasicPaginator pageInfo={pageInfo} onPrevious={() => fetchBooks(pageInfo.links.previous)} onNext={() => fetchBooks(pageInfo.links.next)}/>
             </Box>
-            
         </Box>
         
     )

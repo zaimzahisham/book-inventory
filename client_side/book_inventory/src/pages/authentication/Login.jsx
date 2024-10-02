@@ -18,13 +18,11 @@ const Login = () => {
                 username: username,
                 password: Password
             }
-            console.log(apiUrl, data)
             const response = await noCredentialsAxiosInstance.post(apiUrl, data)
             const token = response.data;
             setJwtCookie(token)
             axiosInstance.defaults.headers['Authorization'] = `Bearer ${token.access}`
             if (response.status === 200) {
-                console.log("login success")
                 navigate('/')
             }else{
                 console.log("There is an error while logging in")

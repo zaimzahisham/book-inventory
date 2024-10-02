@@ -1,5 +1,6 @@
 import axios from "axios"
 import universalCookie from "universal-cookie"
+import config from "../../config";
 
 axios.defaults.withCredentials = true
 const cookie = new universalCookie('/');
