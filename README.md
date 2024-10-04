@@ -16,5 +16,5 @@ To run this app, run the following commands:
     - cd server_side/book_inventory
     - python -m venv venv
     - venv/scripts/activate
-    - pip install -r requiremenets.txt
+    - pip install -r requirements.txt
     - python manage.py runserver
