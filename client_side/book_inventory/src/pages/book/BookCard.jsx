@@ -28,7 +28,7 @@ const BookCard = ({book}) => {
                 </Box>    
             </Box>
             
-            <CardContent sx={{height: '12.5rem'}}>
+            <CardContent sx={{height: '15rem'}}>
                 <Box sx={{...column}}>
                     <Typography variant="h2">{book.title}</Typography>
                         <Typography variant="h3">{book.author}</Typography>
