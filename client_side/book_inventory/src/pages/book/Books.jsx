@@ -30,8 +30,8 @@ const Books = () => {
     return (
         <Box sx={{...page}}>
             <Box sx={{...column, ...centerBox}}>
-                <Typography variant="h2" sx={{textAlign: 'center'}}>POPULAR BOOKS</Typography>    
-                <Typography variant="h1" sx={{textAlign: 'center'}}>Here are our popular books you might like</Typography>     
+                <Typography variant="h1" sx={{textAlign: 'center'}}>POPULAR BOOKS</Typography>    
+                <Typography variant="h2" sx={{textAlign: 'center', fontWeight: 'normal'}}>Here are our popular books you might like</Typography>     
                 <Box sx={{...row}}>
                     <Button variant="contained">View All</Button>
                     <Button variant="outlined">Explore More</Button>

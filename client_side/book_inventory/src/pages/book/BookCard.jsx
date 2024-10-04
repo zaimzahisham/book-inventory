@@ -2,7 +2,7 @@ import { FavoriteBorderOutlined } from "@mui/icons-material"
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material"
 import { getIsAuthor } from "../authentication/auth"
 import { useNavigate } from "react-router-dom"
-import { cardButton, centerBox } from "../../components/Styles"
+import { cardButton, centerBox, column } from "../../components/Styles"
 import { grey } from "@mui/material/colors"
 import noPhotoImage from '../../assets/no-photo.png';
 
@@ -29,11 +29,13 @@ const BookCard = ({book}) => {
             </Box>
             
             <CardContent sx={{height: '12.5rem'}}>
-                <Typography variant="h2">{book.title}</Typography>
-                    <Typography variant="h3">{book.author}</Typography>
-                <Typography variant="h4">Genre: {book.genre}</Typography>
-                <Typography variant="h4" sx={{fontStyle: "italic"}}>{book.description}</Typography>
-                <Typography variant="h5">Published on: {book.publication_date}</Typography>
+                <Box sx={{...column}}>
+                    <Typography variant="h2">{book.title}</Typography>
+                        <Typography variant="h3">{book.author}</Typography>
+                    <Typography variant="h4">Genre: {book.genre}</Typography>
+                    <Typography variant="h4" sx={{fontStyle: "italic"}}>{book.description}</Typography>
+                    <Typography variant="h5">Published on: {book.publication_date}</Typography>    
+                </Box>
             </CardContent>
             {
                 !isAuthor? null :
