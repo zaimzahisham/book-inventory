@@ -10,7 +10,7 @@ To run this app, run the following commands:
   - Frontend (React):
     - cd client_side/book_inventory
     - npm install
-    - npm start dev
+    - npm run dev
 
   - Backend (Django)
     - cd server_side/book_inventory
